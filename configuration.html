@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; bamm 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="bamm 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">bamm 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="control-file">
+<h2>Control File<a class="headerlink" href="#control-file" title="Permalink to this headline">¶</a></h2>
+<p>Configuration options and parameters in BAMM are specified in a <em>control file</em>,
+a plain text file in which each line contains the name of the option or
+parameter, an equal sign, and the value of the option or parameter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">treefile</span> <span class="o">=</span> <span class="n">whaletree</span><span class="o">.</span><span class="n">tre</span>
+<span class="n">runMCMC</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The path of the control file (relative to the current directory) is specified
+with the flag <tt class="docutils literal"><span class="pre">-control</span></tt> when running bamm:</p>
+<div class="highlight-python"><pre>./bamm -control divcontrol.txt</pre>
+</div>
+</div>
+<div class="section" id="options-and-parameters">
+<h2>Options and Parameters<a class="headerlink" href="#options-and-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The following describes each configuration option and parameter for the
+speciation-extinction component of bamm. For true/false values, use 1 for true
+or 0 for false.</p>
+<dl class="docutils">
+<dt>treefile</dt>
+<dd>The name of the input tree file (Newick format) to analyze.</dd>
+<dt>sampleFromPriorOnly</dt>
+<dd>1 - run BAMM by sampling from prior only (ignoring likelihood
+contribution to posterior).
+0 - run full analysis.</dd>
+<dt>runMCMC</dt>
+<dd>1 - run the MCMC sampler.
+0 - just check to see if data can be loaded correctly.</dd>
+<dt>loadEventData</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>eventDataInfile</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>initializeModel</dt>
+<dd>Leave this as 1</dd>
+<dt>useGlobalSamplingProbability</dt>
+<dd>1 - global correction for incomplete taxon sampling in likelihood
+calculation.</dd>
+<dt>globalSamplingFraction</dt>
+<dd>Fraction (0.0 - 1.0) of the total number of species in the clade
+that are actually in the tree being analyzed.</dd>
+</dl>
+<p>updateLambdaInitScale</p>
+<p>updateMuInitScale</p>
+<p>updateLambdaShiftScale</p>
+<p>updateMuShiftScale</p>
+<p>updateEventRateScale</p>
+<dl class="docutils">
+<dt>localGlobalMoveRatio</dt>
+<dd>MCMC tuning parameters. These are the &#8220;step sizes&#8221; for updating parameters
+during MCMC sampling.</dd>
+<dt>minCladeSizeForShift</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>lambdaInit0</dt>
+<dd>Starting speciation rate</dd>
+<dt>lambdaShift0</dt>
+<dd>Starting rate change parameter for speciation (if 0, speciation rates
+won&#8217;t change through time).</dd>
+<dt>muInit0</dt>
+<dd>Initial extinction rate</dd>
+<dt>muShift0</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>targetNumber</dt>
+<dd>The expeced number of &#8220;events&#8221; or rate shifts on the tree,
+if there is no signal in the data.</dd>
+<dt>lambdaInitPrior</dt>
+<dd>Mean of exponential distribution prior on speciation.</dd>
+<dt>lambdaShiftPrior</dt>
+<dd>Pior on speciation rate change parameter.</dd>
+<dt>muInitPrior</dt>
+<dd>Exponential prior on extinction.</dd>
+<dt>muShiftPrior</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>MeanSpeciationLengthFraction</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>segLength</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>mcmcOutfile</dt>
+<dd>The file name in which to write the MCMC parameter output</dd>
+<dt>lambdaOutfile</dt>
+<dd>The file name in which to write branch-specific speciation
+rates.</dd>
+<dt>muOutfile</dt>
+<dd>The file name in which to write branch-specific extinction rates.</dd>
+<dt>acceptrateOutfile</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>lambdaNodeOutfile</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>eventWriteFreq</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>treeWriteFreq</dt>
+<dd>Frequency (in generations) in which to write speciation/extinction rates.
+Recommended frequency of &gt; 10000</dd>
+<dt>mcmcWriteFreq</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>eventDataWriteFreq</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>acceptWriteFreq</dt>
+<dd><em>Description not yet available.</em></dd>
+<dt>printFreq</dt>
+<dd>Frequency (in generations) in which to write to the screen.</dd>
+<dt>NumberGenerations</dt>
+<dd>Number of MCMC generations.</dd>
+<dt>updateRateEventNumber</dt>
+<dd>Frequency in which to update the number of events (shifts) on the
+tree.</dd>
+<dt>updateRateEventPosition</dt>
+<dd>Frequency in which to move the position of a shift point.</dd>
+<dt>updateRateEventRate</dt>
+<dd>Frequency in which to update the rate at which events occur.</dd>
+<dt>updateRateLambda0</dt>
+<dd>Frequency in which to update the initial speciation rate for an
+event.</dd>
+<dt>updateRateLambdaShift</dt>
+<dd>Frequency in which to update how speciation rates change through
+time.</dd>
+<dt>updateRateMu0</dt>
+<dd>Frequency in which to update the initial extinction rate.</dd>
+<dt>initialNumberEvents</dt>
+<dd><em>Description not yet available.</em></dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#control-file">Control File</a></li>
+<li><a class="reference internal" href="#options-and-parameters">Options and Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/configuration.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">bamm 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Carlos Anderson, Dan Rabosky.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>
