@@ -20,8 +20,8 @@ Options and Parameters
 ----------------------
 
 The following describes each configuration option and parameter for the
-speciation-extinction component of bamm. For true/false values, use 1 for true
-or 0 for false.
+speciation-extinction component of bamm. For true or false values, use 1 for
+true or 0 for false.
 
 treefile
   The name of the input tree file (Newick format) to analyze.
