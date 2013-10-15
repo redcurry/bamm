@@ -246,6 +246,9 @@ updateNodeStateScale
 updateBetaShiftScale
   *Description not yet available.*
 
+Starting Parameters
+...................
+
 betaInit
   Initial rate.
 
