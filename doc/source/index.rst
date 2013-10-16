@@ -10,6 +10,7 @@ BAMM Documentation
    :maxdepth: 2
    :numbered:
 
+   introduction
    installation
    configuration
 
